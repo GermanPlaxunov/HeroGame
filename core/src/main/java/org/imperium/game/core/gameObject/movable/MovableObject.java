@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
-import lombok.Data;
 import lombok.Getter;
 import org.imperium.game.core.gameObject.drawable.DrawableObject;
 
@@ -12,6 +11,7 @@ import org.imperium.game.core.gameObject.drawable.DrawableObject;
 public class MovableObject extends DrawableObject implements Movable{
 
     private float moveSpeed;
+    private float delta;
 
     public MovableObject(Texture texture, Vector2 position, Vector2 size, float moveSpeed) {
         super(texture, position, size);
@@ -36,21 +36,29 @@ public class MovableObject extends DrawableObject implements Movable{
 
     @Override
     public void moveUp() {
-        position.add(0, Gdx.graphics.getDeltaTime() * moveSpeed);
+        delta = Gdx.graphics.getDeltaTime() * moveSpeed;
+        position.add(0, delta);
+        center.add(0, delta);
     }
 
     @Override
     public void moveRight() {
-        position.add(Gdx.graphics.getDeltaTime() * moveSpeed, 0);
+        delta = Gdx.graphics.getDeltaTime() * moveSpeed;
+        position.add(delta, 0);
+        center.add(delta, 0);
     }
 
     @Override
     public void moveDown() {
-        position.add(0, Gdx.graphics.getDeltaTime() * (-1) * moveSpeed);
+        delta = Gdx.graphics.getDeltaTime() * (-1) * moveSpeed;
+        position.add(0, delta);
+        center.add(0, delta);
     }
 
     @Override
     public void moveLeft() {
-        position.add(Gdx.graphics.getDeltaTime() * (-1) * moveSpeed, 0);
+        delta = Gdx.graphics.getDeltaTime() * (-1) * moveSpeed;
+        position.add(delta, 0);
+        center.add(delta, 0);
     }
 }

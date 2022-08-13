@@ -17,8 +17,8 @@ public class ObjectsProvider {
         var healthBar = new Texture(Gdx.files.internal("assets/healthBar.png"));
         var position = new Vector2(100, 100);
         var size = new Vector2(80, 90);
-        var fightStats = new FightStats(150, 3.0f, 200, 1.8f);
-        return new Hero(heroTexture, healthBar, position, size, fightStats, 150);
+        var fightStats = new FightStats(350, 2.7f, 200, 2.0f);
+        return new Hero(heroTexture, healthBar, position, size, fightStats, 200);
     }
 
     private Skeleton createSkeleton(){
@@ -26,7 +26,7 @@ public class ObjectsProvider {
         var healthBar = new Texture(Gdx.files.internal("assets/healthBar.png"));
         var position = new Vector2(500, 400);
         var size = new Vector2(70, 90);
-        var fightStats = new FightStats(100, 2.5f, 180, 1.8f);
+        var fightStats = new FightStats(300, 2.5f, 180, 2.0f);
         return new Skeleton(skeletonTexture, healthBar, position, size, fightStats, 100);
     }
 

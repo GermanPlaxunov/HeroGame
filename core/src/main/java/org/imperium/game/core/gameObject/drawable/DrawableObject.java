@@ -11,12 +11,13 @@ public class DrawableObject implements Drawable{
     protected final Texture texture;
     protected final Vector2 position;
     protected final Vector2 size;
+    protected final Vector2 center;
 
     public DrawableObject(Texture texture, Vector2 position, Vector2 size){
         this.texture = texture;
         this.position = position;
         this.size = size;
-
+        this.center = new Vector2(position.x + size.x/2, position.y + size.y/2);
     }
 
     @Override
