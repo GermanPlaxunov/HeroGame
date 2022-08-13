@@ -7,4 +7,5 @@ public interface Fightable {
     boolean checkDistance(DrawableObject drawable);
     void attack(FightableObject fightable);
     void renderHealthBar(SpriteBatch batch);
+    boolean isAlive();
 }

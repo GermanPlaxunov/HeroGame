@@ -20,9 +20,14 @@ public class FightableObject extends MovableObject implements Fightable{
     }
 
     @Override
+    public boolean isAlive() {
+        return stats.getHealth() > 0;
+    }
+
+    @Override
     public void renderHealthBar(SpriteBatch batch){
         batch.begin();
-        batch.draw(healthBar, position.x, position.y + size.y, size.x, 5);
+        batch.draw(healthBar, position.x, position.y + size.y + 10, stats.getHealth(), 5);
         batch.end();
     }
 
@@ -36,5 +41,6 @@ public class FightableObject extends MovableObject implements Fightable{
     @Override
     public void attack(FightableObject fightable) {
         fightable.stats.acceptDamage(stats.getDamage());
+
     }
 }

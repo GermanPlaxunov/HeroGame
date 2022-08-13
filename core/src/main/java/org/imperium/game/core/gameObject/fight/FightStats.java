@@ -19,7 +19,11 @@ public class FightStats {
     }
 
     public void acceptDamage(float damage){
-        this.health -= (damage - this.defence);
+        if(health > (damage - defence)) {
+            health -= (damage - defence);
+        } else {
+            health = 0;
+        }
     }
 
 }
