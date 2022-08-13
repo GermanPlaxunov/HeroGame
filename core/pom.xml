@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.imperium.game</groupId>
-		<artifactId>Hero</artifactId>
-		<version>1.0</version>
-	</parent>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<artifactId>Hero-core</artifactId>
-	<packaging>jar</packaging>
-	<name>HeroGame Core</name>
+    <parent>
+        <groupId>org.imperium.game</groupId>
+        <artifactId>game-parent</artifactId>
+        <version>1.0</version>
+        <relativePath>../game-parent</relativePath>
+    </parent>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.badlogicgames.gdx</groupId>
-			<artifactId>gdx</artifactId>
-		</dependency>
-	</dependencies>
+    <artifactId>Hero-core</artifactId>
+    <version>${release.version}</version>
+    <packaging>jar</packaging>
+    <name>HeroGame Core</name>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+    <properties>
+        <release.version>0.0.1</release.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.badlogicgames.gdx</groupId>
+            <artifactId>gdx</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
