@@ -12,12 +12,13 @@
 
 	<groupId>org.imperium.game</groupId>
 	<artifactId>Hero-desktop</artifactId>
-	<version>1.0</version>
+	<version>${release.version}</version>
 	<packaging>jar</packaging>
 	<name>HeroGame desktop</name>
 
 	<properties>
 		<mainClass>org.imperium.game.java.HeroGameDesktop</mainClass>
+		<release.version>0.0.1</release.version>
 	</properties>
 
 	<dependencies>

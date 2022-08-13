@@ -4,10 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <release.version>0.0.1</release.version>
+    </properties>
+
     <groupId>org.imperium.game</groupId>
     <artifactId>Hero</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>${release.version}</version>
 
     <profiles>
         <profile>
