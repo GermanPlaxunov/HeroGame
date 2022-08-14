@@ -11,10 +11,12 @@ import org.imperium.game.core.gameObject.Hero;
 import org.imperium.game.core.gameObject.ObjectsProvider;
 import org.imperium.game.core.gameObject.Skeleton;
 import org.imperium.game.core.gameObject.fight.FightStats;
+import org.imperium.game.core.map.WallBuilder;
 
 public class HeroGame extends ApplicationAdapter {
 
     private ObjectsProvider provider;
+    private WallBuilder wallBuilder;
     private SpriteBatch batch;
     private Skeleton skeleton;
     private Hero hero;
@@ -25,22 +27,30 @@ public class HeroGame extends ApplicationAdapter {
         batch = new SpriteBatch();
         hero = provider.getHero();
         skeleton = provider.getSkeleton();
+        wallBuilder = new WallBuilder();
     }
 
     @Override
     public void render() {
         Gdx.gl.glClearColor(0.2f, 1.0f, 0.2f, 0.1f);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
+        batch.begin();
         hero.render(batch);
         hero.renderHealthBar(batch);
         skeleton.render(batch);
         skeleton.renderHealthBar(batch);
+        wallBuilder.renderWall(batch, 350, 150, 500, 150, 50);
         update();
+        batch.end();
     }
 
     private void update() {
-        hero.checkMove();
-        skeleton.moveToEnemyIfCloseEnough(hero);
+        if (hero.isAlive()) {
+            hero.checkMove();
+        }
+        if (skeleton.isAlive()) {
+            skeleton.moveToEnemyIfCloseEnough(hero);
+        }
         if (hero.getDistance(skeleton) < hero.getStats().getAttackRange()) {
             if (hero.isAlive()) {
                 hero.attack(skeleton);

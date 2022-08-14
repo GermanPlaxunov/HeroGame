@@ -22,9 +22,7 @@ public class DrawableObject implements Drawable{
 
     @Override
     public void render(SpriteBatch batch) {
-        batch.begin();
         batch.draw(texture, position.x, position.y, size.x, size.y);
-        batch.end();
     }
 
     @Override

@@ -26,9 +26,7 @@ public class FightableObject extends MovableObject implements Fightable{
 
     @Override
     public void renderHealthBar(SpriteBatch batch){
-        batch.begin();
         batch.draw(healthBar, position.x, position.y + size.y + 10, stats.getHealth(), 5);
-        batch.end();
     }
 
     @Override
