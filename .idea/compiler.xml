@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Hero-desktop" />
         <module name="Hero-core" />
+        <module name="game-engine-api" />
         <module name="game-engine" />
       </profile>
     </annotationProcessing>

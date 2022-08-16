@@ -27,6 +27,7 @@
         <module>desktop</module>
         <module>game-parent</module>
         <module>game-engine</module>
+        <module>game-engine-api</module>
     </modules>
 
 </project>

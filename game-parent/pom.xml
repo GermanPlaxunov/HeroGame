@@ -28,6 +28,8 @@
         <maven-antrun-plugin.version>1.6</maven-antrun-plugin.version>
         <maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
         <spring-boot.version>2.7.2</spring-boot.version>
+        <lombok.version>1.18.24</lombok.version>
+        <mapstruct.version>1.5.2.Final</mapstruct.version>
         <mainClass>org.imperium.game.java.HeroGameDesktop</mainClass>
     </properties>
 
@@ -100,8 +102,14 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.24</version>
+                <version>${lombok.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
 
             <!-- Spring Boot Dependencies -->
             <dependency>

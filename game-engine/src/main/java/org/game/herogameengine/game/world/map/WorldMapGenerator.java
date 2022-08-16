@@ -5,6 +5,7 @@ import org.game.herogameengine.game.world.map.cell.Cell;
 import org.game.herogameengine.game.world.map.cell.CellType;
 import org.game.herogameengine.game.world.map.cell.Coordinate;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -17,21 +18,18 @@ public class WorldMapGenerator {
     private final Random random = new Random();
 
     public WorldMap generateWorldMap() {
-        var cells = new HashMap<Coordinate, Cell>();
+        var cells = new ArrayList<Cell>();
         for (var x = 0; x < mapWidth; x++) {
             for (var y = 0; y < mapHeight; y++) {
-                cells.put(new Coordinate(x, y), generateCell());
+                cells.add(generateCell(x, y));
             }
         }
         return new WorldMap(cells);
     }
 
-    private Cell generateCell() {
-        if (random.nextInt(4) < 3) {
-            return new Cell(CellType.EARTH);
-        } else {
-            return new Cell(CellType.WALL);
-        }
+    private Cell generateCell(int x, int y) {
+        var cellType = random.nextInt(4) < 3 ? CellType.EARTH : CellType.WALL;
+        return new Cell(new Coordinate(x, y), cellType);
     }
 
 }
