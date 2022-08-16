@@ -24,8 +24,9 @@
 
     <modules>
         <module>core</module>
-        <module>game-parent</module>
         <module>desktop</module>
+        <module>game-parent</module>
+        <module>game-engine</module>
     </modules>
 
 </project>
