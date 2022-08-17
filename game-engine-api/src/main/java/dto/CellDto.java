@@ -5,6 +5,7 @@ public class CellDto {
     private int y;
     private String cellType;
 
+    public CellDto(){}
     public CellDto(int x, int y, String cellType) {
         this.x = x;
         this.y = y;

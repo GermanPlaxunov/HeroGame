@@ -19,8 +19,9 @@ public class GameEngineController {
     private final WorldMapMapper worldMapMapper;
     private final CellMapper cellMapper;
 
-    @RequestMapping(method = RequestMethod.GET, path = "/get-world-map")
+    @RequestMapping(method = RequestMethod.POST, path = "/get-world-map")
     public WorldMapDto getWorldMap(){
+        log.info("generating new world map");
         var worldMap = worldMapGenerator.generateWorldMap();
         var cellsDto = cellMapper.toDtos(worldMap.getCells());
         var worldMapDto = worldMapMapper.toDto(worldMap);

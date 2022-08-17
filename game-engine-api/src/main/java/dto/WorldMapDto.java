@@ -5,6 +5,7 @@ import java.util.List;
 public class WorldMapDto {
     private List<CellDto> cells;
 
+    public WorldMapDto(){}
     public WorldMapDto(List<CellDto> cells) {
         this.cells = cells;
     }

@@ -1,17 +1,23 @@
 package org.imperium.game.core;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.graphics.GL30;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.graphics.GL30;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Cell;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import dto.CellDto;
+import dto.WorldMapDto;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClients;
 import org.imperium.game.core.gameObject.Hero;
 import org.imperium.game.core.gameObject.ObjectsProvider;
 import org.imperium.game.core.gameObject.Skeleton;
-import org.imperium.game.core.gameObject.fight.FightStats;
 import org.imperium.game.core.map.WallBuilder;
+
+import java.io.*;
+import java.util.List;
 
 public class HeroGame extends ApplicationAdapter {
 
@@ -23,6 +29,7 @@ public class HeroGame extends ApplicationAdapter {
 
     @Override
     public void create() {
+        getWorldMap();
         provider = new ObjectsProvider();
         batch = new SpriteBatch();
         hero = provider.getHero();
@@ -66,5 +73,25 @@ public class HeroGame extends ApplicationAdapter {
         hero.dispose();
         skeleton.dispose();
         batch.dispose();
+    }
+
+    private void getWorldMap() {
+        try {
+            var client = HttpClients.createDefault();
+            var httpPost = new HttpPost("http://localhost:8080/game-engine/get-world-map");
+            var response = client.execute(httpPost);
+            var stream = response.getEntity().getContent();
+            var reader = new BufferedReader(new InputStreamReader(stream));
+            var mapper = new ObjectMapper();
+            var type = new TypeReference<WorldMapDto>(){};
+            var map = (WorldMapDto) mapper.reader()
+                    .forType(type)
+                    .readValue(reader.readLine());
+            for(var cell : map.getCells()){
+                System.out.println(cell.getX() + " " + cell.getY() + " " + cell.getCellType());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

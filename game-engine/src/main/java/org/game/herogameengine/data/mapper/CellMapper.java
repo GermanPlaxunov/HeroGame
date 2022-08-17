@@ -14,14 +14,14 @@ public interface CellMapper {
     @Mappings({
             @Mapping(source = "coordinate.x", target = "x"),
             @Mapping(source = "coordinate.y", target = "y"),
-            @Mapping(source = "cellType.getCellTypeName()", target = "cellType")
+            @Mapping(source = "cellType", target = "cellType")
     })
     CellDto toDto(Cell cell);
 
     @Mappings({
             @Mapping(source = "coordinate.x", target = "x"),
             @Mapping(source = "coordinate.y", target = "y"),
-            @Mapping(source = "cellType.getCellTypeName()", target = "cellType")
+            @Mapping(source = "cellType", target = "cellType")
     })
     List<CellDto> toDtos(List<Cell> cells);
 

@@ -9,7 +9,9 @@ public class EngineBeans {
 
     @Bean
     public WorldMapGenerator worldMapGenerator(){
-        return new WorldMapGenerator(1000, 1000);
+        var mapWidth = 800/100;
+        var mapHeight = 800/100;
+        return new WorldMapGenerator(mapWidth, mapHeight);
     }
 
 }
