@@ -9,8 +9,8 @@ import org.imperium.game.core.gameObject.fight.FightStats;
 @Getter
 public class ObjectsProvider {
 
-    private final Hero hero = createHero();
     private final Skeleton skeleton = createSkeleton();
+    private final Hero hero = createHero();
 
     private Hero createHero(){
         var heroTexture = new Texture(Gdx.files.internal("assets/hero.png"));
