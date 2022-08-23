@@ -26,21 +26,19 @@ public class FightableObject extends MovableObject implements Fightable{
 
     @Override
     public void renderHealthBar(SpriteBatch batch){
-        batch.begin();
         batch.draw(healthBar, position.x, position.y + size.y + 10, stats.getHealth(), 5);
-        batch.end();
     }
 
     @Override
-    public boolean checkDistance(DrawableObject drawable) {
-        return Math.sqrt(
-                Math.pow((drawable.getPosition().x - position.x), 2) +
-                Math.pow((drawable.getPosition().y - position.y), 2)) <= stats.getAttackRange();
+    public float getDistance(DrawableObject drawable) {
+        return (float) Math.sqrt(
+                Math.pow((drawable.getCenter().x - center.x), 2) +
+                Math.pow((drawable.getCenter().y - center.y), 2)
+        );
     }
 
     @Override
     public void attack(FightableObject fightable) {
         fightable.stats.acceptDamage(stats.getDamage());
-
     }
 }
