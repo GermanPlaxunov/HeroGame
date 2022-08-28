@@ -15,10 +15,10 @@ public class ObjectsProvider {
     private Hero createHero(){
         var heroTexture = new Texture(Gdx.files.internal("assets/hero.png"));
         var healthBar = new Texture(Gdx.files.internal("assets/healthBar.png"));
-        var position = new Vector2(100, 100);
+        var position = new Vector2(360, 355);
         var size = new Vector2(80, 90);
         var fightStats = new FightStats(350, 2.7f, 200, 2.0f);
-        return new Hero(heroTexture, healthBar, position, size, fightStats, 200);
+        return new Hero(heroTexture, position, size, 150);
     }
 
     private Skeleton createSkeleton(){
@@ -27,7 +27,7 @@ public class ObjectsProvider {
         var position = new Vector2(500, 400);
         var size = new Vector2(70, 90);
         var fightStats = new FightStats(300, 2.5f, 180, 2.0f);
-        return new Skeleton(skeletonTexture, healthBar, position, size, fightStats, 100);
+        return new Skeleton(skeletonTexture, position, size, 100);
     }
 
 }

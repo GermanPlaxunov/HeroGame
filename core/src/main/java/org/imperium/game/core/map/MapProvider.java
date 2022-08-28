@@ -10,11 +10,10 @@ public class MapProvider {
     private WorldMapDto mapInstance;
 
     public WorldMapDto provideWorldMap(){
-        if(mapInstance != null){
-            return mapInstance;
-        } else {
-            return mapLoader.getWorldMap();
+        if (mapInstance == null) {
+            this.mapInstance = mapLoader.getWorldMap();
         }
+        return mapInstance;
 
     }
 

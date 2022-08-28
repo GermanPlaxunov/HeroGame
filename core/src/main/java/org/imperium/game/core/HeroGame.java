@@ -8,12 +8,14 @@ import org.imperium.game.core.gameObject.Hero;
 import org.imperium.game.core.gameObject.ObjectsProvider;
 import org.imperium.game.core.gameObject.Skeleton;
 import org.imperium.game.core.map.MapProvider;
+import org.imperium.game.core.map.MapRenderer;
 import org.imperium.game.core.map.WallBuilder;
 
 public class HeroGame extends ApplicationAdapter {
 
     private final MapProvider mapProvider = new MapProvider();
-    private ObjectsProvider provider;
+    private ObjectsProvider objectsProvider;
+    private MapRenderer mapRenderer;
     private WallBuilder wallBuilder;
     private SpriteBatch batch;
     private Skeleton skeleton;
@@ -22,10 +24,11 @@ public class HeroGame extends ApplicationAdapter {
     @Override
     public void create() {
         mapProvider.provideWorldMap();
-        provider = new ObjectsProvider();
+        mapRenderer = new MapRenderer();
+        objectsProvider = new ObjectsProvider();
         batch = new SpriteBatch();
-        hero = provider.getHero();
-        skeleton = provider.getSkeleton();
+        hero = objectsProvider.getHero();
+        skeleton = objectsProvider.getSkeleton();
         wallBuilder = new WallBuilder();
     }
 
@@ -34,30 +37,28 @@ public class HeroGame extends ApplicationAdapter {
         Gdx.gl.glClearColor(0.2f, 1.0f, 0.2f, 0.1f);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
         batch.begin();
+        mapRenderer.renderMap(mapProvider.provideWorldMap(), batch);
         hero.render(batch);
-        hero.renderHealthBar(batch);
         skeleton.render(batch);
-        skeleton.renderHealthBar(batch);
-        wallBuilder.renderWall(batch, 350, 150, 500, 150, 50);
         update();
         batch.end();
     }
 
     private void update() {
-        if (hero.isAlive()) {
-            hero.checkMove();
-        }
-        if (skeleton.isAlive()) {
-            skeleton.moveToEnemyIfCloseEnough(hero);
-        }
-        if (hero.getDistance(skeleton) < hero.getStats().getAttackRange()) {
-            if (hero.isAlive()) {
-                hero.attack(skeleton);
-            }
-            if (skeleton.isAlive()) {
-                skeleton.attack(hero);
-            }
-        }
+//        if (hero.isAlive()) {
+//            hero.checkMove();
+//        }
+//        if (skeleton.isAlive()) {
+//            skeleton.moveToEnemyIfCloseEnough(hero);
+//        }
+//        if (hero.getDistance(skeleton) < hero.getStats().getAttackRange()) {
+//            if (hero.isAlive()) {
+//                hero.attack(skeleton);
+//            }
+//            if (skeleton.isAlive()) {
+//                skeleton.attack(hero);
+//            }
+//        }
     }
 
     @Override

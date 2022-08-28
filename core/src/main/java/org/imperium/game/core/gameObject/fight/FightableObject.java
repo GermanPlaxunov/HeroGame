@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import lombok.Getter;
 import org.imperium.game.core.gameObject.drawable.DrawableObject;
 import org.imperium.game.core.gameObject.movable.MovableObject;
+import org.w3c.dom.Text;
 
 @Getter
 public class FightableObject extends MovableObject implements Fightable{
@@ -18,6 +19,7 @@ public class FightableObject extends MovableObject implements Fightable{
         this.healthBar = healthBar;
         this.stats = stats;
     }
+
 
     @Override
     public boolean isAlive() {
