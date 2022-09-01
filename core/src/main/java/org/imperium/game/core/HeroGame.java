@@ -9,14 +9,12 @@ import org.imperium.game.core.gameObject.ObjectsProvider;
 import org.imperium.game.core.gameObject.Skeleton;
 import org.imperium.game.core.map.MapProvider;
 import org.imperium.game.core.map.MapRenderer;
-import org.imperium.game.core.map.WallBuilder;
 
 public class HeroGame extends ApplicationAdapter {
 
     private final MapProvider mapProvider = new MapProvider();
     private ObjectsProvider objectsProvider;
     private MapRenderer mapRenderer;
-    private WallBuilder wallBuilder;
     private SpriteBatch batch;
     private Skeleton skeleton;
     private Hero hero;
@@ -25,11 +23,10 @@ public class HeroGame extends ApplicationAdapter {
     public void create() {
         mapProvider.provideWorldMap();
         mapRenderer = new MapRenderer();
-        objectsProvider = new ObjectsProvider();
+        objectsProvider = new ObjectsProvider(mapProvider);
         batch = new SpriteBatch();
         hero = objectsProvider.getHero();
         skeleton = objectsProvider.getSkeleton();
-        wallBuilder = new WallBuilder();
     }
 
     @Override
@@ -38,27 +35,14 @@ public class HeroGame extends ApplicationAdapter {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
         batch.begin();
         mapRenderer.renderMap(mapProvider.provideWorldMap(), batch);
+        update();
         hero.render(batch);
         skeleton.render(batch);
-        update();
         batch.end();
     }
 
     private void update() {
-//        if (hero.isAlive()) {
-//            hero.checkMove();
-//        }
-//        if (skeleton.isAlive()) {
-//            skeleton.moveToEnemyIfCloseEnough(hero);
-//        }
-//        if (hero.getDistance(skeleton) < hero.getStats().getAttackRange()) {
-//            if (hero.isAlive()) {
-//                hero.attack(skeleton);
-//            }
-//            if (skeleton.isAlive()) {
-//                skeleton.attack(hero);
-//            }
-//        }
+        hero.checkMove();
     }
 
     @Override

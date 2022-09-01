@@ -34,6 +34,7 @@
         <commons-logging.version>1.1.1</commons-logging.version>
         <jackson-databind.version>2.13.3</jackson-databind.version>
         <apache-httpclient.version>4.5.13</apache-httpclient.version>
+        <junit-jupiter-api.version>5.9.0</junit-jupiter-api.version>
         <mainClass>org.imperium.game.java.HeroGameDesktop</mainClass>
     </properties>
 
@@ -133,6 +134,13 @@
                 <artifactId>httpclient</artifactId>
                 <version>${apache-httpclient.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit-jupiter-api.version}</version>
+                <scope>test</scope>
+            </dependency>
+
 
 
             <!-- Spring Boot Dependencies -->

@@ -3,11 +3,11 @@ package org.imperium.game.core.map;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import dto.WorldMapDto;
+import org.imperium.game.core.Constants;
 
 public class MapRenderer {
 
     private final MapTexturesProvider texturesProvider = new MapTexturesProvider();
-    private final int cellSize = 100;
     private boolean isMapRendered = false;
 
 
@@ -15,7 +15,7 @@ public class MapRenderer {
         Texture texture;
         for (var cell : worldMapDto.getCells()) {
             texture = texturesProvider.getTexture(cell.getCellType());
-            batch.draw(texture, cell.getX() * cellSize, cell.getY() * cellSize, cellSize, cellSize);
+            batch.draw(texture, cell.getX() * Constants.cellSize, cell.getY() * Constants.cellSize, Constants.cellSize, Constants.cellSize);
         }
         isMapRendered = true;
     }
