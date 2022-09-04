@@ -7,6 +7,7 @@ import org.imperium.game.core.loader.MapLoader;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class MapProvider implements CellSquare, CoordinatesMapper {
 
@@ -26,9 +27,25 @@ public class MapProvider implements CellSquare, CoordinatesMapper {
         return mapInstance;
     }
 
+    public void updateWorldMap(){
+        this.mapInstance = mapLoader.getWorldMap();
+        this.mapInstance.getCells().stream().forEach(cell -> {
+            cellsMap.put(cell.getX() + DIVIDER + cell.getY(), cell);
+        });
+    }
+
     @Override
     public CellDto getCellByScreenCoordinates(float x, float y) {
-        coordinateKey = ((int) (x / Constants.cellSize)) + DIVIDER + ((int) (y / Constants.cellSize));
+        if(x <= 0){
+            coordinateKey = 0 + DIVIDER;
+        } else {
+            coordinateKey = ((int) (x / Constants.cellSize)) + DIVIDER;
+        }
+        if(y <= 0){
+            coordinateKey += 0;
+        } else {
+            coordinateKey += ((int) (y / Constants.cellSize));
+        }
         return cellsMap.get(coordinateKey);
     }
 

@@ -13,5 +13,4 @@ public interface Material {
     boolean ifMotionRightCrossCellBorder(CellDto currentCell, float delta);
     boolean ifMotionDownCrossCellBorder(CellDto currentCell, float delta);
     boolean ifMotionLeftCrossCellBorder(CellDto currentCell, float delta);
-
 }

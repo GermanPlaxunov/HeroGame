@@ -43,6 +43,12 @@ public class HeroGame extends ApplicationAdapter {
 
     private void update() {
         hero.checkMove();
+        if(hero.ifScreenBorderCrossedOver()){
+            System.out.println("Cross screen");
+            mapProvider.updateWorldMap();
+            hero.getPosition().set(200, 200);
+            hero.getCenter().set(200 + hero.getSize().x, 200 + hero.getSize().y);
+        }
     }
 
     @Override
